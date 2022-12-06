@@ -25,6 +25,37 @@ async function turnPostsIntoPages({ graphql, actions }) {
   });
 }
 
+async function turnCategoriesIntoPages({ graphql, actions }) {
+  console.log('creating category template');
+  const categoryTemplate = path.resolve('./src/pages/posts.js');
+
+  const { data } = await graphql(`
+   query  {
+      categories: allWpTermNode {
+        nodes {
+          id
+          slug
+          name
+        }
+      }
+    }
+  `);
+
+  data.categories.nodes.forEach(category => {
+    actions.createPage({
+      path: `category/${category.slug}`,
+      component: categoryTemplate,
+      context: {
+        slug: category.slug,
+      },
+    })
+    console.log(`Creating page for ${category.slug}`);
+  })
+}
+
 exports.createPages = async (params) => {
-  await turnPostsIntoPages(params);
+  await Promise.all([
+    turnPostsIntoPages(params),
+    turnCategoriesIntoPages(params)
+  ])
 }

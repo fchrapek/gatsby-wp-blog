@@ -8,17 +8,19 @@ export default function SinglePostPage({ data: { post } }) {
     data: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
     alt: post.featuredImage?.node?.alt || ``,
   }
-
   const flexibleContent = post.testFlexible.flexibleContent;
+
   return (
     <div>
       <p>{post.terms.nodes.map(post => (post.name)).join(', ')}</p>
+
       {featuredImage?.data && (
         <GatsbyImage
           image={featuredImage.data}
           alt={featuredImage.alt}
         />
       )}
+
       {flexibleContent?.map(data => (
         <React.Fragment key={Math.floor(Math.random() * 100)}>
           {data?.header &&

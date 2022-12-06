@@ -1,19 +1,32 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import PostsFilter from "../components/PostsFilter";
 import PostsList from "../components/PostsList";
 
-export default function PizzasPage({ data }) {
+
+export default function PostsPage({ data, pageContext }) {
   const posts = data.posts.nodes
   return (
     <>
+      <PostsFilter activeCategory={pageContext.slug}></PostsFilter>
       <PostsList posts={posts} />
     </>
   );
 }
 
 export const query = graphql`
-  query {
-    posts: allWpPost {
+  query($slug: [String]) {
+    posts: allWpPost(filter: {
+      categories: {
+        nodes: {
+          elemMatch: {
+            slug: {
+              in: $slug, 
+            }
+          }
+        }
+      }
+    }) {
       nodes {
         id
         excerpt
