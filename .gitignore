@@ -6,3 +6,5 @@ node_modules
 /.well-known
 .cache
 public
+*.code-workspace
+.env.*

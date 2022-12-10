@@ -7,6 +7,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
   const { data } = await graphql(`
     query {
       posts: allWpPost {
+        totalCount
         nodes {
           slug
           title
@@ -20,11 +21,26 @@ async function turnPostsIntoPages({ graphql, actions }) {
       path: `posts/${post.slug}`,
       component: postTemplate,
       context: {
-        reandom: 'this is so random',
         slug: post.slug,
       },
     })
   });
+
+  const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
+  const pageCount = Math.ceil(data.posts.totalCount / pageSize);
+
+  Array.from({ length: pageCount }).forEach((_, i) => {
+
+    actions.createPage({
+      path: `posts/${i + 1}`,
+      component: path.resolve('./src/pages/posts.js'),
+      context: {
+        skip: i * pageSize,
+        currentPage: i + 1,
+        pageSize,
+      },
+    })
+  })
 }
 
 async function turnCategoriesIntoPages({ graphql, actions }) {
