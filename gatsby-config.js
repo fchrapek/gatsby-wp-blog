@@ -3,6 +3,11 @@ require("dotenv").config({
 })
 
 module.exports = {
+  siteMetadata: {
+    title: `Blog Name`,
+    siteUrl: `https://happyspiders.pl`,
+    description: `Opis bloga`,
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
@@ -43,7 +48,7 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-    // `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet`,
   ],
 }
 

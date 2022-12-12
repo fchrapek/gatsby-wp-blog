@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Test from "../components/Test";
+import SEO from "../components/SEO";
 
 export default function SinglePostPage({ data: { post } }) {
   const featuredImage = {
@@ -11,28 +12,32 @@ export default function SinglePostPage({ data: { post } }) {
   const flexibleContent = post.testFlexible.flexibleContent;
 
   return (
-    <div>
-      <p>{post.terms.nodes.map(post => (post.name)).join(', ')}</p>
+    <>
+      <SEO title={post.title} />
 
-      {featuredImage?.data && (
-        <GatsbyImage
-          image={featuredImage.data}
-          alt={featuredImage.alt}
-        />
-      )}
+      <div>
+        <p>{post.terms.nodes.map(post => (post.name)).join(', ')}</p>
 
-      {flexibleContent?.map(data => (
-        <React.Fragment key={Math.floor(Math.random() * 100)}>
-          {data?.header &&
-            <h1>
-              {data.header}
-            </h1>}
-          {data?.content &&
-            <Test content={data.content} />}
-        </React.Fragment>
-      ))
-      }
-    </div>
+        {featuredImage?.data && (
+          <GatsbyImage
+            image={featuredImage.data}
+            alt={featuredImage.alt}
+          />
+        )}
+
+        {flexibleContent?.map(data => (
+          <React.Fragment key={Math.floor(Math.random() * 100)}>
+            {data?.header &&
+              <h1>
+                {data.header}
+              </h1>}
+            {data?.content &&
+              <Test content={data.content} />}
+          </React.Fragment>
+        ))
+        }
+      </div>
+    </>
   )
 }
 
