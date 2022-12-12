@@ -43,7 +43,7 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-react-helmet`,
   ],
 }
 
