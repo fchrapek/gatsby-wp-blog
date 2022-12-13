@@ -21,7 +21,7 @@ function SinglePost({ post }) {
 
   return (
     <PostStyles>
-      <Link to={`/posts/${post.slug}`}>
+      <Link to={`/${post.slug}`}>
         <h2>{post.title}</h2>
       </Link>
       <p>{post.terms.nodes.map(term => term.name).join(', ')}</p>

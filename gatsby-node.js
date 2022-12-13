@@ -18,7 +18,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
 
   data.posts.nodes.forEach(post => {
     actions.createPage({
-      path: `posts/${post.slug}`,
+      path: `/${post.slug}`,
       component: postTemplate,
       context: {
         slug: post.slug,
@@ -32,8 +32,8 @@ async function turnPostsIntoPages({ graphql, actions }) {
   Array.from({ length: pageCount }).forEach((_, i) => {
 
     actions.createPage({
-      path: `posts/${i + 1}`,
-      component: path.resolve('./src/pages/posts.js'),
+      path: `/${i + 1}`,
+      component: path.resolve('./src/pages/index.js'),
       context: {
         skip: i * pageSize,
         currentPage: i + 1,
@@ -45,7 +45,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
 
 async function turnCategoriesIntoPages({ graphql, actions }) {
   console.log('creating category template');
-  const categoryTemplate = path.resolve('./src/pages/posts.js');
+  const categoryTemplate = path.resolve('./src/pages/index.js');
 
   const { data } = await graphql(`
    query  {
@@ -61,7 +61,7 @@ async function turnCategoriesIntoPages({ graphql, actions }) {
 
   data.categories.nodes.forEach(category => {
     actions.createPage({
-      path: `category/${category.slug}`,
+      path: `temat/${category.slug}`,
       component: categoryTemplate,
       context: {
         slug: category.slug,

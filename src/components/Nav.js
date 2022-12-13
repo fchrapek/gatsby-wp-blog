@@ -15,7 +15,7 @@ export default function Nav() {
     <NavStyles>
       <ul>
         <li>
-          <Link to="/posts/">Posts</Link>
+          Tu moze bedzie nawigacja
         </li>
       </ul>
     </NavStyles>

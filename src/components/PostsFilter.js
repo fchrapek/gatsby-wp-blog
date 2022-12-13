@@ -73,7 +73,7 @@ export default function PostsFilter({ activeCategory }) {
 
   return (
     <CategoriesStyles>
-      <Link to="/posts">
+      <Link to="/">
         <span className="name">
           All
         </span>

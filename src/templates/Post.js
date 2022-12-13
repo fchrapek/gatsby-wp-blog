@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Test from "../components/Test";
 import SEO from "../components/SEO";
+import parse from 'html-react-parser';
 
 export default function SinglePostPage({ data: { post } }) {
   const featuredImage = {
@@ -27,12 +28,7 @@ export default function SinglePostPage({ data: { post } }) {
 
         {flexibleContent?.map(data => (
           <React.Fragment key={Math.floor(Math.random() * 100)}>
-            {data?.heading &&
-              <h1>
-                {data.heading}
-              </h1>}
-            {data?.content &&
-              <Test content={data.content} />}
+            {data?.content && parse(data.content)}
           </React.Fragment>
         ))
         }
@@ -62,9 +58,6 @@ export const query = graphql`
       }
       post {
           flexibleContent {
-          ... on WpPost_Post_FlexibleContent_Heading {
-            heading
-          }
           ... on WpPost_Post_FlexibleContent_Content {
             content
           }
