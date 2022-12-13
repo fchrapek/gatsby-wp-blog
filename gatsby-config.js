@@ -1,4 +1,13 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
+  siteMetadata: {
+    title: `Blog Name`,
+    siteUrl: `https://happyspiders.pl`,
+    description: `Opis bloga`,
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
@@ -42,3 +51,4 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
   ],
 }
+

@@ -11,11 +11,14 @@ const CategoriesStyles = styled.div`
     display: flex;
     align-items: center;
     place-content: center;
-    background-color: red;
     padding: 1rem;
-
+    
     .count {
       border: 2px solid white;
+    }
+    
+    &[aria-current="page"] {
+      background-color: red;
     }
   }
 `;
@@ -48,7 +51,7 @@ function countPostsInCateogries(posts) {
   return sortedCategories;
 }
 
-export default function PostsFilter() {
+export default function PostsFilter({ activeCategory }) {
   const { posts } = useStaticQuery(graphql`
     query  {
       posts: allWpPost {
@@ -70,11 +73,25 @@ export default function PostsFilter() {
 
   return (
     <CategoriesStyles>
+      <Link to="/posts">
+        <span className="name">
+          All
+        </span>
+
+        <span className="count">
+          {posts.nodes.length}
+        </span>
+      </Link>
       {cateogriesWtihCount.map(category => (
-        <Link key={category.id} to={`/category/${category.slug}`} >
+        <Link
+          key={category.id}
+          to={`/category/${category.slug}`}
+          className={category.slug === activeCategory ? 'active' : ''}>
+
           <span className="name">
             {category.name}
           </span>
+
           <span className="count">
             {category.count}
           </span>

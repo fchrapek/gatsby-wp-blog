@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from 'gatsby';
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
-import PostsFilter from "./PostsFilter";
 
 const PostGridStyles = styled.div`
   display: grid;
@@ -39,7 +38,6 @@ function SinglePost({ post }) {
 export default function PostsList({ posts }) {
   return (
     <>
-      <PostsFilter></PostsFilter>
       <PostGridStyles>
         {posts.map(post => (
           <SinglePost key={post.id} post={post}></SinglePost>
