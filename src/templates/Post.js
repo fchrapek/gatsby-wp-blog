@@ -9,7 +9,7 @@ export default function SinglePostPage({ data: { post } }) {
     data: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
     alt: post.featuredImage?.node?.alt || ``,
   }
-  const flexibleContent = post.testFlexible.flexibleContent;
+  const flexibleContent = post.post?.flexibleContent;
 
   return (
     <>
@@ -27,9 +27,9 @@ export default function SinglePostPage({ data: { post } }) {
 
         {flexibleContent?.map(data => (
           <React.Fragment key={Math.floor(Math.random() * 100)}>
-            {data?.header &&
+            {data?.heading &&
               <h1>
-                {data.header}
+                {data.heading}
               </h1>}
             {data?.content &&
               <Test content={data.content} />}
@@ -60,12 +60,12 @@ export const query = graphql`
           }
         }
       }
-      testFlexible {
-        flexibleContent {
-          ... on WpContentNode_Testflexible_FlexibleContent_Header {
-            header
+      post {
+          flexibleContent {
+          ... on WpPost_Post_FlexibleContent_Heading {
+            heading
           }
-          ... on WpContentNode_Testflexible_FlexibleContent_Content {
+          ... on WpPost_Post_FlexibleContent_Content {
             content
           }
         }

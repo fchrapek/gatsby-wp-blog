@@ -15,7 +15,7 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `http://nextjs.test/graphql`,
+          `https://happyspiderspl.filipchrapek.com/graphql`,
       },
     },
     {
