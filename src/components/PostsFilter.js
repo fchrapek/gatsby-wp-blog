@@ -1,27 +1,29 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from "gatsby";
+import CategoryTab from "./CategoryTab";
 import styled from 'styled-components';
 
-const CategoriesStyles = styled.div`
+const CategoriesStyles = styled.nav`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  margin-bottom: 2rem;
+  gap: .6rem;
 
   a {
     display: flex;
     align-items: center;
     place-content: center;
-    padding: 1rem;
-    
-    .count {
-      border: 2px solid white;
-    }
     
     &[aria-current="page"] {
-      background-color: red;
+      
+      span {
+        color: var(--c-gray-800);
+        background-color: var(--c-mint-100);
+      }
     }
   }
 `;
+
 
 function countPostsInCateogries(posts) {
   const counts = posts.nodes
@@ -69,32 +71,17 @@ export default function PostsFilter({ activeCategory }) {
       }
     }
   `)
+
   const cateogriesWtihCount = countPostsInCateogries(posts)
 
   return (
     <CategoriesStyles>
       <Link to="/">
-        <span className="name">
-          All
-        </span>
-
-        <span className="count">
-          {posts.nodes.length}
-        </span>
+        <CategoryTab name='wszystkie' count={posts.nodes.length} />
       </Link>
       {cateogriesWtihCount.map(category => (
-        <Link
-          key={category.id}
-          to={`/category/${category.slug}`}
-          className={category.slug === activeCategory ? 'active' : ''}>
-
-          <span className="name">
-            {category.name}
-          </span>
-
-          <span className="count">
-            {category.count}
-          </span>
+        <Link key={category.id} to={`/temat/${category.slug}`}>
+          <CategoryTab name={category.name} count={category.count} />
         </Link>
       ))}
     </CategoriesStyles>

@@ -7,17 +7,16 @@ import Pagination from "../components/Pagination";
 
 export default function PostsPage({ data, pageContext }) {
   const posts = data.posts.nodes
-  console.log(data.posts)
   return (
     <>
       <PostsFilter activeCategory={pageContext.slug}></PostsFilter>
-      <Pagination
+      {/* <Pagination
         pageSize={parseInt(process.env.GATSBY_PAGE_SIZE)}
         totalCount={data.posts.totalCount}
         currentPage={pageContext.currentPage || 1}
         skip={pageContext.skip}
         base="/"
-      />
+      /> */}
       <PostsList posts={posts} />
     </>
   );

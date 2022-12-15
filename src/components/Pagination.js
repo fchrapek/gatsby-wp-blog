@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PaginationStyles = styled.div`
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 
   a {
     &[disabled] {
