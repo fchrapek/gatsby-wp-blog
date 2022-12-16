@@ -44,6 +44,11 @@ const Typography = createGlobalStyle`
   h2 {
     font-size: 2.2rem;
     line-height: 3.2rem;
+
+    @media ${breakpoint.md} { 
+      font-size: 2.8rem;
+      line-height: 3.6rem;
+    }
   }
 
   a {

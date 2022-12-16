@@ -15,7 +15,7 @@ const HeaderStyles = styled.header`
   border-bottom: 1px dashed var(--c-mint-100);
   
   @media ${breakpoint.md} { 
-    grid-column-gap: 6.4rem;
+    grid-column-gap: 4.8rem;
     margin-bottom: 4.8rem;
     padding-bottom: 4.8rem;
   }
@@ -79,15 +79,17 @@ export default function Header() {
         <Logo />
       </Link>
       {siteData.title &&
-        <h1 className="site-title">
-          {siteData.title}
+        <Link to={'/'}>
+          <h1 className="site-title">
+            {siteData.title}
 
-          {siteData.description &&
-            <span className="site-tagline">
-              {siteData.description}
-            </span>
-          }
-        </h1>
+            {siteData.description &&
+              <span className="site-tagline">
+                {siteData.description}
+              </span>
+            }
+          </h1>
+        </Link>
       }
 
       <p className="site-description">

@@ -7,9 +7,9 @@ import Header from "./Header";
 
 
 const ContentStyles = styled.main`
-  max-width: 78rem;
+  max-width: 76rem;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 4rem 2rem;
 `;
 
 export default function Layout({ children }) {

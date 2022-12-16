@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import SEO from "../components/SEO";
+import Seo from "../components/Seo";
 import parse from 'html-react-parser';
 
 export default function SinglePostPage({ data: { post } }) {
@@ -13,7 +13,7 @@ export default function SinglePostPage({ data: { post } }) {
 
   return (
     <>
-      <SEO title={post.title} />
+      <Seo title={post.title} />
 
       <article>
         <h1>{post.title}</h1>
@@ -66,7 +66,7 @@ export const query = graphql`
     post: wpPost(slug: { eq: $slug }) {
       id
       title
-      date
+      date(formatString: "DD MMM YY", locale: "pl")
       excerpt
       featuredImage {
         node {
