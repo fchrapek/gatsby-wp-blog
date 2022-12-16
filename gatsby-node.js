@@ -44,7 +44,6 @@ async function turnPostsIntoPages({ graphql, actions }) {
 }
 
 async function turnCategoriesIntoPages({ graphql, actions }) {
-  console.log('creating category template');
   const categoryTemplate = path.resolve('./src/pages/index.js');
 
   const { data } = await graphql(`
@@ -67,7 +66,6 @@ async function turnCategoriesIntoPages({ graphql, actions }) {
         slug: category.slug,
       },
     })
-    console.log(`Creating page for ${category.slug}`);
   })
 }
 

@@ -3,15 +3,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PaginationStyles = styled.div`
-  /* border: 2px solid blue; */
-
   a {
     &[disabled] {
-    opacity: .4;
-    pointer-events: none;
+      opacity: .4;
+      pointer-events: none;
+    }
   }
-  }
-
 `
 
 export default function Pagination({ pageSize, totalCount, currentPage, skip, base }) {
@@ -20,9 +17,6 @@ export default function Pagination({ pageSize, totalCount, currentPage, skip, ba
   const nextPage = currentPage + 1;
   const hasNextPage = nextPage <= totalPages;
   const hasPrevPage = prevPage >= 1;
-
-  console.log(totalPages)
-  console.log(nextPage)
 
   return (
     <PaginationStyles>

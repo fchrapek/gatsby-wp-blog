@@ -1,8 +1,36 @@
 import React from 'react';
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import SEO from "../components/SEO";
+import styled from 'styled-components';
+import Seo from "../components/Seo";
+import PostCategoryTab from "../components/PostCategoryTab";
 import parse from 'html-react-parser';
+
+const PostStyles = styled.article`
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin-bottom: 1.6rem;
+  }
+
+  section {
+    p:last-child {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  .post {
+    &-title {
+      margin-bottom: 4rem;
+    }
+
+    &-thumbnail {
+      margin-bottom: 4rem;
+    }
+  }
+`;
 
 export default function SinglePostPage({ data: { post } }) {
   const featuredImage = {
@@ -13,15 +41,21 @@ export default function SinglePostPage({ data: { post } }) {
 
   return (
     <>
-      <SEO title={post.title} />
+      <Seo title={post.title} />
 
-      <article>
-        <h1>{post.title}</h1>
+      <PostStyles>
+        {post.terms.nodes.map(post => (
+          <PostCategoryTab key={post.id} name={post.name} />
+        ))}
 
-        <p>{post.terms.nodes.map(post => (post.name)).join(', ')}</p>
+        <h1 className="post-title">
+          {post.title}
+        </h1>
+
 
         {featuredImage?.data && (
           <GatsbyImage
+            className="post-thumbnail"
             image={featuredImage.data}
             alt={featuredImage.alt}
           />
@@ -56,7 +90,7 @@ export default function SinglePostPage({ data: { post } }) {
             </React.Fragment>
           )
         })}
-      </article>
+      </PostStyles>
     </>
   )
 }
@@ -66,6 +100,8 @@ export const query = graphql`
     post: wpPost(slug: { eq: $slug }) {
       id
       title
+      date(formatString: "DD MMM YY", locale: "pl")
+      excerpt
       featuredImage {
         node {
           altText

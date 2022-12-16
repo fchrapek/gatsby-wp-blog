@@ -17,7 +17,7 @@ const Typography = createGlobalStyle`
     color: var(--c-mint-100);
     font-family: SpaceGrotesk, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
-    line-height: 2.4rem;
+    line-height: 2.6rem;
     font-weight: 300;
   }
 
@@ -44,6 +44,11 @@ const Typography = createGlobalStyle`
   h2 {
     font-size: 2.2rem;
     line-height: 3.2rem;
+
+    @media ${breakpoint.md} { 
+      font-size: 2.8rem;
+      line-height: 3.6rem;
+    }
   }
 
   a {

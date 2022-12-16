@@ -7,7 +7,6 @@ import Pagination from "../components/Pagination";
 
 export default function PostsPage({ data, pageContext }) {
   const posts = data.posts.nodes
-  console.log(data.posts)
   return (
     <>
       <PostsFilter activeCategory={pageContext.slug}></PostsFilter>
@@ -24,7 +23,7 @@ export default function PostsPage({ data, pageContext }) {
 }
 
 export const query = graphql`
-  query($skip: Int = 0, $pageSize: Int = 2, $slug: [String]) {
+  query($skip: Int = 0, $pageSize: Int = 8, $slug: [String]) {
     posts: allWpPost(limit: $pageSize, skip: $skip, filter: {
       categories: {
         nodes: {
@@ -43,7 +42,7 @@ export const query = graphql`
         slug
         uri
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMM YY", locale: "pl")
         featuredImage {
           node {
             altText

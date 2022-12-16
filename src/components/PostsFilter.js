@@ -1,12 +1,13 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from "gatsby";
-import CategoryTab from "./CategoryTab";
+import PostCategoryTab from "./PostCategoryTab";
 import styled from 'styled-components';
 
-const CategoriesStyles = styled.nav`
+const PostCategoriesStyles = styled.nav`
   display: flex;
+  max-width: 60rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
   gap: .6rem;
 
   a {
@@ -53,7 +54,7 @@ function countPostsInCateogries(posts) {
   return sortedCategories;
 }
 
-export default function PostsFilter({ activeCategory }) {
+export default function PostsFilter() {
   const { posts } = useStaticQuery(graphql`
     query  {
       posts: allWpPost {
@@ -75,15 +76,15 @@ export default function PostsFilter({ activeCategory }) {
   const cateogriesWtihCount = countPostsInCateogries(posts)
 
   return (
-    <CategoriesStyles>
+    <PostCategoriesStyles>
       <Link to="/">
-        <CategoryTab name='wszystkie' count={posts.nodes.length} />
+        <PostCategoryTab name='wszystkie' count={posts.nodes.length} />
       </Link>
       {cateogriesWtihCount.map(category => (
         <Link key={category.id} to={`/temat/${category.slug}`}>
-          <CategoryTab name={category.name} count={category.count} />
+          <PostCategoryTab name={category.name} count={category.count} />
         </Link>
       ))}
-    </CategoriesStyles>
+    </PostCategoriesStyles>
   )
 }

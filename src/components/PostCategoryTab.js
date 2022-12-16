@@ -14,9 +14,9 @@ const CategoryStyles = styled.span`
   }
 `;
 
-export default function CategoryTab({ name, count }) {
+export default function PostCategoryTab({ name, count }) {
   return (
-    <CategoryStyles className="category-tab">
+    <CategoryStyles className="post-category">
       {name}
 
       {count &&
