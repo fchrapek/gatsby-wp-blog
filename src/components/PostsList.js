@@ -4,6 +4,8 @@ import PostTile from './PostTile';
 
 const PostGridStyles = styled.ul`
   display: grid;
+  max-width: 58rem;
+  margin: 0 auto;
   gap: 2rem;
 `;
 

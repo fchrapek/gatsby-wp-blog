@@ -5,8 +5,9 @@ import styled from 'styled-components';
 
 const PostCategoriesStyles = styled.nav`
   display: flex;
+  max-width: 60rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
   gap: .6rem;
 
   a {

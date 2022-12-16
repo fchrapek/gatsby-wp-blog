@@ -16,7 +16,6 @@ const LogoStyles = styled.div`
 
 export default function Logo() {
   return (
-    <LogoStyles className="logo">
-    </LogoStyles>
+    <LogoStyles className="logo" />
   );
 }

@@ -17,7 +17,7 @@ const Typography = createGlobalStyle`
     color: var(--c-mint-100);
     font-family: SpaceGrotesk, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
-    line-height: 2.4rem;
+    line-height: 2.6rem;
     font-weight: 300;
   }
 

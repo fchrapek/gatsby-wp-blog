@@ -23,17 +23,24 @@ const PostStyles = styled.li`
     &-category {
       margin-right: .6rem;
       margin-bottom: 1rem;
+      color: var(--c-mint-100);
+      background-color: transparent;
+      border: .1rem solid var(--c-mint-100);
     }
 
     &-title {
       margin-bottom: 1rem;
     }
 
+    &-meta {
+      margin-bottom: 2rem;
+    }
+
     &-excerpt {
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       display: -webkit-box;
-      height: 7rem;
+      height: 4.8rem;
       overflow: hidden;
     }
   }
