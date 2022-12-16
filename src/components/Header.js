@@ -77,11 +77,15 @@ export default function Header() {
       <Link className="site-home" to={'/'}>
         <Logo />
       </Link>
+
       {siteData.title &&
-        <h1 className="site-title">
-          {siteData.title}
-        </h1>
+        <Link className="site-title" to={'/'}>
+          <h1 >
+            {siteData.title}
+          </h1>
+        </Link>
       }
+
       {siteData.description &&
         <p className="site-tagline">
           {siteData.description}

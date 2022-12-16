@@ -30,6 +30,8 @@ function SinglePost({ post }) {
   //   alt: post.featuredImage?.node?.alt || ``,
   // }
 
+  console.log(post)
+
   return (
     <PostStyles>
       <Link to={`/${post.slug}`}>

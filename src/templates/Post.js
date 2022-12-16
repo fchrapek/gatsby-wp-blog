@@ -66,6 +66,8 @@ export const query = graphql`
     post: wpPost(slug: { eq: $slug }) {
       id
       title
+      date
+      excerpt
       featuredImage {
         node {
           altText
