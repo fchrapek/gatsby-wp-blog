@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import 'normalize.css';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 import Footer from './Footer';
+import Header from "./Header";
 
 
 const ContentStyles = styled.main`
-  max-width: 60rem;
+  max-width: 78rem;
   margin: 0 auto;
   padding: 2rem;
 `;
@@ -18,6 +18,7 @@ export default function Layout({ children }) {
       <GlobalStyles />
       <Typography />
       <ContentStyles>
+        <Header />
         {children}
         <Footer />
       </ContentStyles>
