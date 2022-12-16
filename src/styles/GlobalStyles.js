@@ -12,8 +12,31 @@ const GlobalStyles = createGlobalStyle`
     --c-text: var(--c-mint-100);
   }
 
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+  
   body {
     background-color: var(--c-gray-700);
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 `;
 

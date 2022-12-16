@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-
+import { breakpoint } from "../styles/BreakPoints";
 import font from '../assets/fonts/SpaceGrotesk-VariableFont_wght.ttf';
 
 const Typography = createGlobalStyle`
@@ -27,7 +27,6 @@ const Typography = createGlobalStyle`
   h4,
   h5,
   h6 {
-    margin: 0;
     color: var(--c-mint-200);
     font-weight: 500;
   }
@@ -35,6 +34,11 @@ const Typography = createGlobalStyle`
   h1 {
     font-size: 2.8rem;
     line-height: 3.8rem;
+
+    @media ${breakpoint.md} { 
+      font-size: 4rem;
+      line-height: 4.8rem;
+    }
   }
 
   h2 {
