@@ -33,11 +33,12 @@ const HeaderStyles = styled.header`
 
     &-title {
       grid-area: 1 / 2 / 2 / 2;
-      margin-bottom: .8rem;
     }
 
     &-tagline {
+      display: block;
       grid-area: 2 / 2 / 3 / 3;
+      margin-top: .8rem;
       font-size: 1.4rem;
       line-height: 2rem;
     }
@@ -77,19 +78,16 @@ export default function Header() {
       <Link className="site-home" to={'/'}>
         <Logo />
       </Link>
-
       {siteData.title &&
-        <Link className="site-title" to={'/'}>
-          <h1 >
-            {siteData.title}
-          </h1>
-        </Link>
-      }
+        <h1 className="site-title">
+          {siteData.title}
 
-      {siteData.description &&
-        <p className="site-tagline">
-          {siteData.description}
-        </p>
+          {siteData.description &&
+            <span className="site-tagline">
+              {siteData.description}
+            </span>
+          }
+        </h1>
       }
 
       <p className="site-description">
