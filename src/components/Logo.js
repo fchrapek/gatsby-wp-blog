@@ -9,8 +9,8 @@ const LogoStyles = styled.div`
   background-color: var(--c-mint-200);
 
   @media ${breakpoint.md} { 
-    width: 16rem;
-    height: 16rem;
+    width: 15rem;
+    height: 15rem;
   }
 `;
 
