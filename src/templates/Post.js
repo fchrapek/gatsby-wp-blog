@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
-import Seo from "../components/Seo";
+// import Seo from "../components/Seo";
 import PostCategoryTab from "../components/PostCategoryTab";
 import parse from 'html-react-parser';
 
@@ -41,7 +41,7 @@ export default function SinglePostPage({ data: { post } }) {
 
   return (
     <>
-      <Seo title={post.title} />
+      {/* <Seo title={post.title} /> */}
 
       <PostStyles>
         {post.terms.nodes.map(post => (
